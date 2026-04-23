@@ -63,3 +63,8 @@ async def general_exception_handler(request: Request, exc: Exception):
 
 # Register all routes
 app.include_router(router, prefix="/api/v1")
+
+@app.get("/")
+def root_redirect():
+    from fastapi.responses import RedirectResponse
+    return RedirectResponse(url="/docs")

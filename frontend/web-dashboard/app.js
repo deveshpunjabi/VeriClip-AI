@@ -2,7 +2,7 @@
 const isLocalhost = window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1";
 const API_BASE = isLocalhost 
     ? "http://localhost:8000/api/v1" 
-    : "https://vericlip-api.onrender.com/api/v1"; // Render URL placeholder
+    : "https://vericlip-ai.onrender.com/api/v1";
 
 // --- State ---
 let loadedThreats = [];

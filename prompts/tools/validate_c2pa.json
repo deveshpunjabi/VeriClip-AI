@@ -1,0 +1,13 @@
+{
+  "name": "validate_c2pa",
+  "description": "Verify cryptographic chain continuity and COSE signature validity",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "manifest_hash": {"type": "string", "description": "SHA256 of C2PA manifest payload"},
+      "sequence_number": {"type": "integer", "description": "Expected segment sequence"},
+      "prev_hash": {"type": "string", "description": "Previous segment manifest hash"}
+    },
+    "required": ["manifest_hash", "sequence_number"]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "generate_takedown_notice",
+  "description": "Generate jurisdiction-specific legal notice with auto-injected clauses",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "jurisdiction": {"type": "string", "enum": ["india", "usa", "global"]},
+      "infringement_url": {"type": "string"},
+      "original_work": {"type": "string"},
+      "evidence_links": {"type": "array", "items": {"type": "string"}}
+    },
+    "required": ["jurisdiction", "infringement_url", "original_work"]
+  }
+}

@@ -1,0 +1,43 @@
+[
+  {
+    "input": {
+      "threat_id": "threat_abc123",
+      "jurisdiction": "IN",
+      "infringement_url": "https://example.com/ipl-2026-free-stream",
+      "original_work": "IPL 2026 Official Broadcast - Match 15",
+      "evidence_links": [
+        "https://evidence.vericlip.ai/screenshots/abc123.png",
+        "https://evidence.vericlip.ai/fingerprint/abc123.json"
+      ]
+    },
+    "output": {
+      "notice": {
+        "recipient": "example.com Legal Team",
+        "subject": "Copyright Infringement Notice - IPL 2026 Unauthorized Broadcast",
+        "body": "This notice is served pursuant to Section 55 of The Copyright Act, 1957...",
+        "legal_clauses": [
+          "Copyright Act 1957 Section 51 - When copyright infringed",
+          "Copyright Act 1957 Section 55 - Civil remedies for copyright infringement",
+          "IT Act 2000 Section 79 - Exemption from liability of intermediaries"
+        ],
+        "deadline": "72h"
+      },
+      "firebase_alert": {
+        "title": "High Confidence Infringement Detected",
+        "body": "92% match - IPL 2026 unauthorized stream on example.com",
+        "priority": "high",
+        "action_url": "/cases/threat_abc123"
+      },
+      "audit_log": {
+        "case_id": "case_xyz789",
+        "action": "notice_generated",
+        "timestamp": "2026-04-09T15:30:00Z",
+        "hash": "sha256:audit_hash_456..."
+      },
+      "attribution_stub": {
+        "ab_sequence": "SEQ-IPL2026-M15-001",
+        "note": "Demo simulation of server-side watermarking"
+      }
+    }
+  }
+]

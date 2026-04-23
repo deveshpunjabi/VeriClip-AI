@@ -1,0 +1,59 @@
+{
+  "threats": [
+    {
+      "threat_id": "threat_demo_001",
+      "media_asset_id": "asset_ipl_2026_final",
+      "infringement_url": "https://free-cricket-stream.xyz/ipl-live",
+      "infringement_title": "Watch IPL 2026 Final Live - Free HD Stream",
+      "threat_level": "critical",
+      "confidence": 0.96,
+      "evidence_urls": [
+        "https://evidence.vericlip.ai/screenshots/threat_demo_001.png"
+      ],
+      "fingerprint_match_score": 0.97,
+      "takedown_status": "pending",
+      "jurisdiction": "IN",
+      "created_at": "2026-04-09T14:30:00Z",
+      "verified_at": "2026-04-09T14:30:03Z"
+    },
+    {
+      "threat_id": "threat_demo_002",
+      "media_asset_id": "asset_ipl_2026_final",
+      "infringement_url": "https://t.me/ipl_free_stream_2026",
+      "infringement_title": "Telegram: IPL Free Stream 2026",
+      "threat_level": "high",
+      "confidence": 0.89,
+      "evidence_urls": [],
+      "fingerprint_match_score": 0.91,
+      "takedown_status": "submitted",
+      "jurisdiction": "IN",
+      "created_at": "2026-04-09T14:32:00Z",
+      "verified_at": "2026-04-09T14:32:04Z"
+    },
+    {
+      "threat_id": "threat_demo_003",
+      "media_asset_id": "asset_ipl_2026_highlights",
+      "infringement_url": "https://youtube.com/watch?v=xyz123",
+      "infringement_title": "IPL 2026 Full Match Highlights - Unauthorized Upload",
+      "threat_level": "medium",
+      "confidence": 0.78,
+      "evidence_urls": [],
+      "fingerprint_match_score": 0.82,
+      "takedown_status": "pending",
+      "jurisdiction": "US",
+      "created_at": "2026-04-09T14:35:00Z",
+      "verified_at": "2026-04-09T14:35:05Z"
+    }
+  ],
+  "statistics": {
+    "total_threats_detected": 3,
+    "critical": 1,
+    "high": 1,
+    "medium": 1,
+    "low": 0,
+    "takedowns_submitted": 1,
+    "takedowns_pending": 2,
+    "average_detection_time_seconds": 4.2,
+    "average_confidence": 0.88
+  }
+}

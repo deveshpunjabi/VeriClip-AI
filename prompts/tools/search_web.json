@@ -1,0 +1,12 @@
+{
+  "name": "search_web",
+  "description": "Search open web for media URLs matching fingerprint hash and ontology filters",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {"type": "string", "description": "Search query combining title, event, sport"},
+      "date_range": {"type": "string", "description": "e.g., 'd[7]' for last 7 days"}
+    },
+    "required": ["query"]
+  }
+}

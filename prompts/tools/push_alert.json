@@ -1,0 +1,14 @@
+{
+  "name": "push_alert",
+  "description": "Push real-time alert to Firebase dashboard and mobile clients",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "title": {"type": "string", "description": "Alert title"},
+      "body": {"type": "string", "description": "Alert body message"},
+      "priority": {"type": "string", "enum": ["low", "medium", "high", "critical"]},
+      "action_url": {"type": "string", "description": "Deep link URL for alert action"}
+    },
+    "required": ["title", "body", "priority"]
+  }
+}

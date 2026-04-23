@@ -1,0 +1,28 @@
+# Vertex AI Agent Builder Configuration
+# Register these agents in Vertex AI console with tool definitions
+
+agents:
+  scanner:
+    system_instruction: prompts/system/scanner_agent.md
+    tools:
+      - prompts/tools/search_web.json
+    temperature: 0.2
+    max_output_tokens: 2048
+    response_mime_type: application/json
+
+  verifier:
+    system_instruction: prompts/system/verifier_agent.md
+    tools:
+      - prompts/tools/validate_c2pa.json
+    temperature: 0.0
+    max_output_tokens: 4096
+    response_mime_type: application/json
+
+  alert:
+    system_instruction: prompts/system/alert_agent.md
+    tools:
+      - prompts/tools/generate_notice.json
+      - prompts/tools/push_alert.json
+    temperature: 0.1
+    max_output_tokens: 2048
+    response_mime_type: application/json

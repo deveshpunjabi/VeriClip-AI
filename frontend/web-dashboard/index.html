@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nebula | VeriClip AI Command Center</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=JetBrains+Mono:wght@300;500&family=Plus+Jakarta+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="nebula-theme">
+    <div class="stars-overlay"></div>
+    
+    <!-- Top HUD -->
+    <header class="hud-top">
+        <div class="hud-logo">
+            <span class="logo-icon" role="img" aria-label="Shield icon representing protection">🛡️</span>
+            <div class="logo-text">
+                <h1>VERICLIP AI</h1>
+                <span class="hud-tagline">NEBULA COMMAND CENTER</span>
+            </div>
+        </div>
+
+        <div class="hud-system-status">
+            <div class="status-indicator" aria-live="polite" aria-atomic="true">
+                <div class="pulse-ring" aria-hidden="true"></div>
+                <span id="api-status">SYSTEM: STANDBY</span>
+            </div>
+            <button id="btn-refresh" class="hud-btn" aria-label="Refresh all dashboard data">INITIALIZE REFRESH</button>
+        </div>
+    </header>
+
+    <main class="dashboard-grid">
+        <!-- HUD Metrics -->
+        <section class="metrics-row" aria-label="Dashboard metrics">
+            <div class="glass-metric" id="metric-threats">
+                <span class="metric-label">ACTIVE THREATS</span>
+                <span class="metric-value" id="val-threats" aria-label="Number of active threats">000</span>
+                <div class="metric-graph crimson" aria-hidden="true"></div>
+            </div>
+            <div class="glass-metric" id="metric-protected">
+                <span class="metric-label">MEDIA PROTECTED</span>
+                <span class="metric-value" id="val-media" aria-label="Number of media assets protected">000</span>
+                <div class="metric-graph cyan" aria-hidden="true"></div>
+            </div>
+            <div class="glass-metric" id="metric-takedowns">
+                <span class="metric-label">TAKEDOWNS ISSUED</span>
+                <span class="metric-value" id="val-notices" aria-label="Number of takedown notices issued">000</span>
+                <div class="metric-graph cyan" aria-hidden="true"></div>
+            </div>
+            <div class="glass-metric" id="metric-revenue">
+                <span class="metric-label">EST. REVENUE SAVED</span>
+                <span class="metric-value" id="val-revenue" aria-label="Estimated revenue saved">$0.0k</span>
+                <div class="metric-graph green" aria-hidden="true"></div>
+            </div>
+        </section>
+
+        <div class="layout-main">
+            <!-- Left Panel: Map & Actions -->
+            <div class="panel-left">
+                <div class="glass-panel map-container">
+                    <div class="panel-header">
+                        <h2>GLOBAL THREAT MAP</h2>
+                        <span class="panel-sub">REAL-TIME GEOGRAPHIC INFRINGEMENT PULSE</span>
+                    </div>
+                    <div id="threat-map" class="svg-map-placeholder">
+                        <!-- Stylized Map will be injected or CSS pulsed here -->
+                        <div class="map-pulse IndianPulse"></div>
+                        <div class="map-pulse USPulse"></div>
+                    </div>
+                </div>
+
+                <div class="actions-container">
+                    <div class="glass-panel action-panel">
+                        <h3>SCANNER SWARM</h3>
+                        <form id="form-scan" class="nebula-form">
+                            <label for="scan-query" class="sr-only">Search query</label>
+                            <input type="text" id="scan-query" placeholder="Enter search query..." required aria-label="Search query for infringement detection">
+                            <div class="form-row">
+                                <label for="scan-media-id" class="sr-only">Media ID</label>
+                                <input type="text" id="scan-media-id" placeholder="Media ID" aria-label="Media asset ID">
+                                <button type="submit" class="nebula-btn-primary">START SWARM</button>
+                            </div>
+                        </form>
+                        <div id="scan-result" class="console-output hidden"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Panel: Threat Feed -->
+            <div class="panel-right">
+                <div class="glass-panel feed-panel">
+                    <div class="panel-header">
+                        <h2>THREAT FEED</h2>
+                        <div class="feed-controls">
+                            <input type="number" id="threat-min-conf" min="0" max="1" step="0.1" value="0.5" placeholder="Min Conf">
+                            <button id="btn-load-threats" class="icon-btn">🔄</button>
+                        </div>
+                    </div>
+                    <div id="threat-feed" class="threat-list">
+                        <!-- Dynamic Threat Cards -->
+                        <div class="empty-state">WAITING FOR SWARM DATA...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Tables -->
+        <section class="bottom-tables">
+            <div class="glass-panel table-panel">
+                <div class="panel-header">
+                    <h2>CONFIRMED EVENTS</h2>
+                    <button id="btn-load-events" class="nebula-btn-sm">REFETCH EVENTS</button>
+                </div>
+                <div class="table-wrapper">
+                    <table class="nebula-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>SOURCE URL</th>
+                                <th>LEVEL</th>
+                                <th>JURISDICTION</th>
+                                <th>ACTIONS</th>
+                            </tr>
+                        </thead>
+                        <tbody id="event-table-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- LEGAL CONSOLE MODAL -->
+    <div id="modal-overlay" class="nebula-modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-content">
+        <div class="nebula-modal">
+            <div class="modal-glow"></div>
+            <header class="modal-header">
+                <div class="modal-title-group">
+                    <h3 id="modal-title">LEGAL TAKEDOWN NOTICE</h3>
+                    <span id="modal-subtitle">JURISDICTION: US (DMCA)</span>
+                </div>
+                <button class="modal-close-btn" id="modal-close" aria-label="Close modal">✕</button>
+            </header>
+            <div class="modal-body">
+                <div class="legal-console">
+                    <pre id="modal-content"></pre>
+                </div>
+            </div>
+            <footer class="modal-footer">
+                <button class="nebula-btn-outline" onclick="copyNotice()">COPY TO CLIPBOARD</button>
+                <button class="nebula-btn-primary" onclick="confirmTakedown()">AUTHORIZE SEND</button>
+            </footer>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+[
+  {
+    "input": {
+      "candidate_url": "https://example.com/ipl-2026-free-stream",
+      "original_fingerprint": "sha256:abc123...",
+      "c2pa_status": "MISSING",
+      "sports_context": "IPL 2026, BCCI, cricket live stream"
+    },
+    "output": {
+      "match_confidence": 0.92,
+      "c2pa_status": "MISSING",
+      "fair_use_assessment": {
+        "purpose": "Commercial redistribution without license",
+        "nature": "Direct rebroadcast of live sports content",
+        "amount": "Full match coverage",
+        "market_effect": "Significant revenue loss for rights holder"
+      },
+      "recommendation": "FLAG",
+      "explainable_report": "The candidate URL hosts an unauthorized live stream of IPL 2026 cricket matches. The content lacks C2PA provenance metadata, indicating it was not sourced from official distribution channels. Visual analysis confirms identical broadcast graphics, camera angles, and commentary as the official BCCI feed. The stream is monetized via advertisements, constituting commercial exploitation. This represents clear copyright infringement under Indian Copyright Act 1957 Section 51.",
+      "legal_references": [
+        "Indian Copyright Act 1957 Sec 51",
+        "Indian Copyright Act 1957 Sec 14",
+        "IT Act 2000 Sec 79"
+      ]
+    }
+  },
+  {
+    "input": {
+      "candidate_url": "https://youtube.com/watch?v=highlights-123",
+      "original_fingerprint": "sha256:def456...",
+      "c2pa_status": "VALID",
+      "sports_context": "IPL 2026 highlights, cricket clips"
+    },
+    "output": {
+      "match_confidence": 0.45,
+      "c2pa_status": "VALID",
+      "fair_use_assessment": {
+        "purpose": "Commentary and news reporting",
+        "nature": "Short excerpts with transformative commentary",
+        "amount": "Under 30 seconds per clip, multiple matches",
+        "market_effect": "Minimal impact, may drive viewership to official streams"
+      },
+      "recommendation": "REVIEW",
+      "explainable_report": "The content consists of short highlight clips with added commentary and analysis. While C2PA chain validates origin from official source, the usage pattern suggests fair use for news reporting and commentary. Clips are under 30 seconds each with transformative analysis added. Recommend human review to assess if clip length and aggregation exceed fair use boundaries.",
+      "legal_references": [
+        "Indian Copyright Act 1957 Sec 52 (Fair Dealing)",
+        "US Fair Use Doctrine 17 U.S.C. § 107"
+      ]
+    }
+  }
+]
